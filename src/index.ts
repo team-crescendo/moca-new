@@ -1,9 +1,10 @@
 import 'dotenv/config';
 import { Client, GatewayIntentBits, Events } from 'discord.js';
+import { env } from '#env.ts';
 
 // Created by ChatGPT
 
-const token = process.env.DISCORD_TOKEN;
+const token = env.DISCORD_TOKEN;
 if (!token) {
   console.error('DISCORD_TOKEN이 설정되어 있지 않습니다. .env 확인');
   process.exit(1);
