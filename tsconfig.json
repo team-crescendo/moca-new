@@ -11,6 +11,8 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "paths": {
       "#*": ["./src/*"]
     }
