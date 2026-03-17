@@ -15,7 +15,9 @@
     "allowImportingTsExtensions": true,
     "paths": {
       "#*": ["./src/*"]
-    }
+    },
+    "experimentalDecorators": true,
+		"emitDecoratorMetadata": true
   },
   "include": ["src"]
 }
