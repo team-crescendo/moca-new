@@ -1,9 +1,9 @@
 import "dotenv/config";
-import { env } from "#env.ts";
 import { MocaClient } from "#client.ts";
+import { config } from "#config";
 
 (async () => {
-  const token = env.DISCORD_TOKEN;
+  const token = config.discordToken;
 
   const client = new MocaClient();
 

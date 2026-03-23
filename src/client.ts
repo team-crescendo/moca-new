@@ -2,6 +2,7 @@ import { createLogger } from "#utils/logger";
 import { CommandClient } from "@pikokr/command.ts";
 import Discord, { Events, GatewayIntentBits } from "discord.js";
 import path from "path";
+import { Logger } from "tslog";
 
 /**
  * Customized CommandClient for Moca
@@ -17,16 +18,17 @@ export class MocaClient extends CommandClient {
         GatewayIntentBits.MessageContent,
       ],
     });
+    const logger: Logger<unknown> = createLogger("Moca");
 
-    super(discord, createLogger("Moca"));
+    super(discord, logger);
 
+    this.enableApplicationCommandsExtension({});
     this.registry.loadAllModulesInDirectory(path.join(__dirname, "modules"));
 
-    this.discord.on(Events.ClientReady, this.onReady);
+    this.discord.on(Events.ClientReady, () => this.onReady());
   }
 
   onReady() {
-    console.log(this.logger);
     this.logger.info("Moca is ready to serve!");
   }
 }

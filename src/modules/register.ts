@@ -1,4 +1,4 @@
-import { applicationCommand, Extension, listener } from "@pikokr/command.ts";
+import { applicationCommand, Extension } from "@pikokr/command.ts";
 import { ApplicationCommandType } from "discord.js";
 
 class Registration extends Extension {
