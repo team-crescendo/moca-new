@@ -1,3 +1,4 @@
+import { config } from "#config";
 import { createLogger } from "#utils/logger";
 import { CommandClient } from "@pikokr/command.ts";
 import Discord, { Events, GatewayIntentBits } from "discord.js";
@@ -22,10 +23,18 @@ export class MocaClient extends CommandClient {
 
     super(discord, logger);
 
-    this.enableApplicationCommandsExtension({});
+    this.enableApplicationCommandsExtension({
+      guilds: config.slashCommand.guilds,
+    });
+
+    this.enableTextCommandsExtension({
+      prefix: config.prefix,
+    });
+
     this.registry.loadAllModulesInDirectory(path.join(__dirname, "modules"));
 
     this.discord.on(Events.ClientReady, () => this.onReady());
+    this.discord.on(Events.Debug, (msg) => this.logger.debug(msg));
   }
 
   onReady() {

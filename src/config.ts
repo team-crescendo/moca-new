@@ -4,9 +4,12 @@ import z from "zod";
 
 export const configSchema = z.object({
   discordToken: z.string().regex(/[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+/g),
+
   slashCommand: z.object({
-    guild: z.array(z.string()).nullable(),
+    guilds: z.array(z.string()).optional(),
   }),
+
+  prefix: z.array(z.string()).default(["모카야 "]),
 });
 
 export type Config = z.infer<typeof configSchema>;
